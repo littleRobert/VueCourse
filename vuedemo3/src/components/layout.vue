@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import myDialog from './dialog'
+import myDialog from './base/dialog'
 import logForm from './logForm'
 import regForm from './regForm'
 export default {

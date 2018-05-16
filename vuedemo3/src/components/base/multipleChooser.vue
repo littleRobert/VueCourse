@@ -1,7 +1,7 @@
 <template>
   <div class="chooser-component">
     <ul class="chooser-list">
-      <li>123123</li>
+      <li v-for="item in selections">{{ item.label }}</li>
     </ul>
   </div>
 </template>

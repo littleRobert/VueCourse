@@ -7,39 +7,31 @@
     <div class="sales-board-form">
       <div class="sales-board-line">
         <div class="sales-board-line-left">
-          购买数量
+          产品类型1：
         </div>
         <div class="sales-board-line-right">
-
+          <v-chooser :choices="productType"></v-chooser>
         </div>
       </div>
       <div class="sales-board-line">
         <div class="sales-board-line-left">
-          购买数量
+          产品类型2：
         </div>
         <div class="sales-board-line-right">
-
+          <v-selection :selections="productType"></v-selection>
         </div>
       </div>
       <div class="sales-board-line">
         <div class="sales-board-line-left">
-          购买数量
+          产品类型3：
         </div>
         <div class="sales-board-line-right">
-
+          <v-multiple-chooser :selections="productType"></v-multiple-chooser>
         </div>
       </div>
       <div class="sales-board-line">
         <div class="sales-board-line-left">
-          购买数量
-        </div>
-        <div class="sales-board-line-right">
-
-        </div>
-      </div>
-      <div class="sales-board-line">
-        <div class="sales-board-line-left">
-          购买数量
+          有效时间：
         </div>
         <div class="sales-board-line-right">
 
@@ -50,10 +42,31 @@
 </template>
 
 <script>
+  import VSelection from '../../components/base/sellection'
+  import VChooser from '../../components/base/chooser'
+  import VMultipleChooser from '../../components/base/chooser'
   export default {
+    components: {
+      VSelection,
+      VChooser,
+      VMultipleChooser
+    },
     data () {
       return {
-
+        productType: [
+          {
+            label: '入门版',
+            value: 0
+          },
+          {
+            label: '中级版',
+            value: 1
+          },
+          {
+            label: '高级版',
+            value: 2
+          }
+        ]
       }
     }
   }

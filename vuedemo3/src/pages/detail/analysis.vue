@@ -44,7 +44,7 @@
 <script>
   import VSelection from '../../components/base/sellection'
   import VChooser from '../../components/base/chooser'
-  import VMultipleChooser from '../../components/base/chooser'
+  import VMultipleChooser from '../../components/base/multipleChooser'
   export default {
     components: {
       VSelection,

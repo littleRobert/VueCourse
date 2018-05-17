@@ -12,8 +12,8 @@
     </div>
   </div>
 </template>
-<script>
 
+<script>
 export default {
   //自定义组件
   components: {
@@ -22,7 +22,6 @@ export default {
   //变量
   data () {
     return {
-      isChoose:1,
       nowIndex:0
     }
   },
@@ -39,13 +38,12 @@ export default {
   //方法
   methods: {
     chosenSeletcion (index) {
-      this.nowIndex = index
-      this.emit('on-change', this.selections[index])
+      this.nowIndex = index;
+      this.$emit('on-change', this.choices[index])
     }
   }
 }
 </script>
-
 <style scoped>
   .chooser-component {
     position: relative;

@@ -11,37 +11,35 @@
     </div>
   </div>
 </template>
-<script>
 
-export default {
-  props: {
-    selections: {
-      type: Array,
-      default: [{
-        label: 'test',
-        value: 0
-      }]
-    }
-  },
-  //变量
-  data () {
-    return {
-      isDrop: false,
-      nowIndex: 0
-    }
-  },
-  //方法
-  methods: {
-    toggleDrop () {
-      this.isDrop = !this.isDrop
+<script>
+  export default {
+    props: {
+      selections: {
+        type: Array,
+        default: [{
+          label: 'test',
+          value: 0
+        }]
+      }
     },
-    chooseSelection (index) {
-      this.nowIndex = index
-      this.isDrop = !this.isDrop
-      this.$emit('on-change', this.nowIndex)
+    data () {
+      return {
+        isDrop: false,
+        nowIndex: 0
+      }
+    },
+    methods: {
+      toggleDrop () {
+        this.isDrop = !this.isDrop
+      },
+      chooseSelection (index) {
+        this.nowIndex = index
+        this.isDrop = false
+        this.$emit('on-change', this.selections[this.nowIndex])
+      }
     }
   }
-}
 </script>
 
 <style scoped>
@@ -98,6 +96,3 @@ export default {
     background: #e3e3e3;
   }
 </style>
-
-
-

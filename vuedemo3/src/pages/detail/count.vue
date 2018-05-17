@@ -10,7 +10,7 @@
           产品类型：
         </div>
         <div class="sales-board-line-right">
-          <v-selection :selections="productType"></v-selection>
+          <v-choooser :choices="buyType"></v-choooser>
         </div>
       </div>
       <div class="sales-board-line">
@@ -18,7 +18,7 @@
           适用地区：
         </div>
         <div class="sales-board-line-right">
-          <v-selection :selections="productType"></v-selection>
+          <v-selection :selections="districts"></v-selection>
         </div>
       </div>
       <div class="sales-board-line">
@@ -245,19 +245,41 @@
     },
     data () {
       return {
-        productType: [
+        buyType: [
           {
-            label: '入门版',
+            label: '红色版',
             value: 0
           },
           {
-            label: '中级版',
+            label: '绿色版',
             value: 1
           },
           {
-            label: '高级版',
+            label: '紫色版',
             value: 2
           }
+        ],
+        districts: [
+          {
+            label: '北京',
+            value: 0
+          },
+          {
+            label: '上海',
+            value: 1
+          },
+          {
+            label: '广州',
+            value: 2
+          },
+          {
+            label: '深圳',
+            value: 3
+          },
+          {
+            label: '天津',
+            value: 4
+          },
         ]
       }
     }

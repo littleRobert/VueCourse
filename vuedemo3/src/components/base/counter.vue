@@ -2,7 +2,7 @@
   <div class="counter-component">
     <div class="counter-btn" @click="minus"> - </div>
     <div class="counter-show">
-      <input type="text" v-model="number" @keyup="filtNumbert">
+      <input type="text" v-model="number" @keyup="filtNumber">
     </div>
     <div class="counter-btn" @click="add"> + </div>
   </div>
@@ -33,8 +33,17 @@ export default {
   },
   //方法
   methods: {
-    filtNumbert () {
-      let
+    filtNumber () {
+      let filter;
+      if (typeof this.number === 'string') {
+        filter = Number(this.number.replace(/\D/g, ''))
+      }else {
+        filter = this.number
+      }
+      if (filter > this.max || filter < this.min) {
+        filter = this.min
+      }
+      this.number = filter
     },
     minus () {
       if (this.number <= this.min) {

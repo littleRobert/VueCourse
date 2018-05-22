@@ -10,12 +10,12 @@
           购买数量：
         </div>
         <div class="sales-board-line-right">
-          <v-counter :choices="productType"></v-counter>
+          <v-counter @on-change=""></v-counter>
         </div>
       </div>
       <div class="sales-board-line">
         <div class="sales-board-line-left">
-          产品类型2：
+          产品类型：
         </div>
         <div class="sales-board-line-right">
           <v-selection :selections="productType"></v-selection>
@@ -69,7 +69,7 @@
       </ul>
     </div>
     <my-dialog :is-show="isShowPayDialog" @on-close="hidePayDialog">
-      <bank-chooser></bank-chooser>
+      <bank-chooser @on-change="onChangBanks"></bank-chooser>
     </my-dialog>
   </div>
 </template>
@@ -106,7 +106,9 @@
             value: 2
           }
         ],
-        isShowPayDialog: false
+        isShowPayDialog: false,
+        bankId: null
+
       }
     },
     methods: {
@@ -115,6 +117,9 @@
       },
       hidePayDialog () {
         this.isShowPayDialog = false
+      },
+      onChangBanks (bankObj) {
+        this.bankId = bankObj.id
       }
     }
   }

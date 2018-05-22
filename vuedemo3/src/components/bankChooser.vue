@@ -5,7 +5,7 @@
         v-for="(item, index) in banks"
         @click="chooseSelection(index)"
         :title="item.label"
-        :class="[item.name, {active: index = nowIndex}]"
+        :class="[item.name, {active: index === nowIndex}]"
       ></li>
     </ul>
   </div>
@@ -13,10 +13,6 @@
 <script>
 
 export default {
-  //自定义组件
-  components: {
-
-  },
   //变量
   data () {
     return {
@@ -45,14 +41,11 @@ export default {
       ]
     }
   },
-  //获取自定义属性的值
-  props: {
-
-  },
   //方法
   methods: {
     chooseSelection (index) {
       this.nowIndex = index
+      this.$emit('onchange', this.banks[index])
     }
   }
 }

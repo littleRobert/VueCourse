@@ -18,15 +18,7 @@
           产品类型：
         </div>
         <div class="sales-board-line-right">
-          <v-selection :selections="productType"></v-selection>
-        </div>
-      </div>
-      <div class="sales-board-line">
-        <div class="sales-board-line-left">
-          产品类型3：
-        </div>
-        <div class="sales-board-line-right">
-          <v-multiple-chooser :selections="productType"></v-multiple-chooser>
+          <v-selection :selections="buyTypes"></v-selection>
         </div>
       </div>
       <div class="sales-board-line">
@@ -34,7 +26,23 @@
           有效时间：
         </div>
         <div class="sales-board-line-right">
-
+          <v-selection :selections="periodList"></v-selection>
+        </div>
+      </div>
+      <div class="sales-board-line">
+        <div class="sales-board-line-left">
+          产品版本：
+        </div>
+        <div class="sales-board-line-right">
+          <v-single-chooser :choices="versionList"></v-single-chooser>
+        </div>
+      </div>
+      <div class="sales-board-line">
+        <div class="sales-board-line-left">
+          总价：
+        </div>
+        <div class="sales-board-line-right">
+          {{ price }} 元
         </div>
       </div>
       <div class="sales-board-line">
@@ -68,7 +76,17 @@
         <li>用户所在地理区域分布状况等</li>
       </ul>
     </div>
+    <!-- 银行选择、总价弹出框 -->
     <my-dialog :is-show="isShowPayDialog" @on-close="hidePayDialog">
+      <table class="buy-dialog-table">
+        <tr>
+          <th>购买数量</th>
+          <th>产品类型</th>
+          <th>有效时间</th>
+          <th>产品版本</th>
+          <th>总价</th>
+        </tr>
+      </table>
       <bank-chooser @on-change="onChangBanks"></bank-chooser>
     </my-dialog>
   </div>
@@ -76,7 +94,7 @@
 
 <script>
   import VSelection from '../../components/base/sellection'
-  import VChooser from '../../components/base/chooser'
+  import VSingleChooser from '../../components/base/singleChooser'
   import VMultipleChooser from '../../components/base/multipleChooser'
   import VCounter from '../../components/base/counter'
   import MyDialog from '../../components/base/dialog'
@@ -84,7 +102,7 @@
   export default {
     components: {
       VSelection,
-      VChooser,
+      VSingleChooser,
       VMultipleChooser,
       VCounter,
       MyDialog,
@@ -92,7 +110,21 @@
     },
     data () {
       return {
-        productType: [
+        versionList: [
+          {
+            label: '客户版',
+            value: 0
+          },
+          {
+            label: '代理商版',
+            value: 1
+          },
+          {
+            label: '专家版',
+            value: 2
+          }
+        ],
+        buyTypes: [
           {
             label: '入门版',
             value: 0
@@ -106,9 +138,23 @@
             value: 2
           }
         ],
+        periodList: [
+          {
+            label: '半年',
+            value: 0
+          },
+          {
+            label: '一年',
+            value: 1
+          },
+          {
+            label: '三年',
+            value: 2
+          }
+        ],
         isShowPayDialog: false,
-        bankId: null
-
+        bankId: null,
+        price: 0
       }
     },
     methods: {

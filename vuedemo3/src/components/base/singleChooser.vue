@@ -15,10 +15,6 @@
 
 <script>
 export default {
-  //自定义组件
-  components: {
-
-  },
   //变量
   data () {
     return {

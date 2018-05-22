@@ -245,7 +245,7 @@
 
 <script>
   import VSelection from '../../components/base/sellection'
-  import VChoooser from '../../components/base/chooser'
+  import VChoooser from '../../components/base/singleChooser'
   export default {
     components: {
       VSelection,

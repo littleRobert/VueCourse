@@ -9,7 +9,7 @@
         购买数量：
       </div>
       <div class="sales-board-line-right">
-        <v-counter></v-counter>
+        <v-counter max="20" min="1"></v-counter>
       </div>
     </div>
   </div>

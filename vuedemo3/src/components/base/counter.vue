@@ -31,6 +31,11 @@ export default {
       default: 1
     }
   },
+  watch: {
+    number () {
+      this.$emit('on-change', this.number)
+    }
+  },
   //方法
   methods: {
     filtNumber () {

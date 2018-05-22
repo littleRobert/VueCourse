@@ -37,6 +37,14 @@
           500 元
         </div>
       </div>
+      <div class="sales-board-line">
+        <div class="sales-board-line-left">&nbsp;</div>
+        <div class="sales-board-line-right">
+          <div class="button" @click="showPayDialog">
+            立即购买
+          </div>
+        </div>
+      </div>
     </div>
     <div class="sales-board-des">
       <h2>产品说明</h2>

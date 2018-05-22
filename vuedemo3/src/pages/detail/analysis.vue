@@ -7,10 +7,10 @@
     <div class="sales-board-form">
       <div class="sales-board-line">
         <div class="sales-board-line-left">
-          产品类型1：
+          购买数量：
         </div>
         <div class="sales-board-line-right">
-          <v-chooser :choices="productType"></v-chooser>
+          <v-counter :choices="productType"></v-counter>
         </div>
       </div>
       <div class="sales-board-line">
@@ -37,7 +37,40 @@
 
         </div>
       </div>
+      <div class="sales-board-line">
+        <div class="sales-board-line-left">&nbsp;</div>
+        <div class="sales-board-line-right">
+          <div class="button" @click="showPayDialog">
+            立即购买
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="sales-board-des">
+      <h2>产品说明</h2>
+      <p>网站访问统计分析报告的基础数据源于网站流量统计信息，但其价值远高于原始数据资料。专业的网站访问统计分析报告对网络营销的价值，正如专业的财务分析报告对企业经营策略的价值。</p>
+
+      <h3>用户行为指标</h3>
+      <ul>
+        <li>用户行为指标主要反映用户是如何来到网站的、在网站上停留了多长时间、访问了哪些页面等，主要的统计指标包括：</li>
+        <li>用户在网站的停留时间；</li>
+        <li>用户来源网站（也叫“引导网站”）；</li>
+        <li>用户所使用的搜索引擎及其关键词；</li>
+        <li>在不同时段的用户访问量情况等。</li>
+      </ul>
+
+      <h3>浏览网站方式</h3>
+      <ul>
+        <li>用户上网设备类型</li>
+        <li>用户浏览器的名称和版本</li>
+        <li>访问者电脑分辨率显示模式</li>
+        <li>用户所使用的操作系统名称和版本</li>
+        <li>用户所在地理区域分布状况等</li>
+      </ul>
+    </div>
+    <my-dialog :is-show="isShowPayDialog" @on-close="hidePayDialog">
+      <bank-chooser></bank-chooser>
+    </my-dialog>
   </div>
 </template>
 
@@ -45,11 +78,17 @@
   import VSelection from '../../components/base/sellection'
   import VChooser from '../../components/base/chooser'
   import VMultipleChooser from '../../components/base/multipleChooser'
+  import VCounter from '../../components/base/counter'
+  import MyDialog from '../../components/base/dialog'
+  import BankChooser from '../../components/bankChooser'
   export default {
     components: {
       VSelection,
       VChooser,
-      VMultipleChooser
+      VMultipleChooser,
+      VCounter,
+      MyDialog,
+      BankChooser
     },
     data () {
       return {
@@ -66,7 +105,16 @@
             label: '高级版',
             value: 2
           }
-        ]
+        ],
+        isShowPayDialog: false
+      }
+    },
+    methods: {
+      showPayDialog () {
+        this.isShowPayDialog = true
+      },
+      hidePayDialog () {
+        this.isShowPayDialog = false
       }
     }
   }
